@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { GlobalContext } from '../../context/GlobalState'
 import { Transaction as TransactionType } from '../../types'
 
 
 const Transaction = ({
-  id = 0,
+  id = '',
   text = '',
   amount = 0,
 }: TransactionType) => {
+  const {
+    deleteTransaction = () => {},
+  } = useContext(GlobalContext)
+
   return (
     <>
       <li className="minus">
@@ -14,7 +19,7 @@ const Transaction = ({
 
         <button
           className="delete-btn"
-          onClick={() => console.log('delete', id)}
+          onClick={() => deleteTransaction(id)}
         >
           x
         </button>
