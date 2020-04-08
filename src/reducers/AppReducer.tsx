@@ -6,15 +6,22 @@ import {
 import {
   State,
   TransactionActionTypes,
+  Transaction,
 } from '../types'
 
 const AppReducer = (state: State, action: TransactionActionTypes): State => {
   switch (action.type) {
     case ADD_TRANSACTION:
-      return state
+      return {
+        ...state,
+        transactions: [...state.transactions, action.payload]
+      }
 
     case DELETE_TRANSACTION:
-      return state
+      return {
+        ...state,
+        transactions: state.transactions.filter((transaction: Transaction): boolean => transaction.id !== action.payload)
+      }
 
     default:
       return state
