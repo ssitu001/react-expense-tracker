@@ -8,14 +8,17 @@ const Transaction = ({
   text = '',
   amount = 0,
 }: TransactionType) => {
+  const transactionClass = amount >= 0 ? 'plus' : 'minus'
+  const formattedAmount = amount >= 0 ? `+$${amount}` : `-$${amount * -1}`
+
   const {
     deleteTransaction = () => {},
   } = useContext(GlobalContext)
 
   return (
     <>
-      <li className="minus">
-        {text} <span>{amount}</span>
+      <li className={transactionClass}>
+        {text} <span>{formattedAmount}</span>
 
         <button
           className="delete-btn"

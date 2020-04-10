@@ -12,15 +12,8 @@ import {
   DELETE_TRANSACTION
 } from '../actions/actions'
 
-const dummyTransactions = [
-  { id: '1', text: 'Cheese', amount: -20 },
-  { id: '2', text: 'Pay day', amount: 3000 },
-  { id: '3', text: 'Burger', amount: -10 },
-  { id: '4', text: 'Macbook', amount: 1500 }
-]
-
 const initialState = {
-  transactions: [...dummyTransactions],
+  transactions: [],
 }
 
 export const GlobalContext = createContext<Partial<ContextProps>>(initialState)
